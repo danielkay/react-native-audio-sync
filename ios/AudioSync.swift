@@ -79,7 +79,7 @@ class AudioSync: NSObject {
         repeat {
             audioFile2BufferPaddingCount += 1
         } while audioFile1SamplePointer[audioFile2BufferPaddingCount] == 0 && audioFile2BufferPaddingCount < audioFile2BufferSize
-        
+
         // determine the size of the second buffer, without padding, and cut down by the sampling stride
         let audioFile2TrimmedBufferSize: Int = (Int(audioFile2BufferSize) - audioFile2BufferPaddingCount) / samplingStride
 
@@ -219,7 +219,7 @@ class AudioSync: NSObject {
         }
         free(correlationResult)
 
-        // determine the index from the original audioFile2 buffer at which the correlationResult occured
+        // determine the index from the original audioFile2 buffer at which the correlationResult occurred
         let matchingResultIndex: Int = (maxResultIndex - (audioFile2TrimmedBufferSize + (audioFile2BufferPaddingCount / samplingStride)))
         let samplingWindowCount: Int = Int(workingSampleRate) / samplingStride
 
